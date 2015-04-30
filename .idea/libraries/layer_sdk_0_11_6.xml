@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="layer-sdk-0.11.6">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.layer.sdk/layer-sdk/0.11.6/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.layer.sdk/layer-sdk/0.11.6/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
