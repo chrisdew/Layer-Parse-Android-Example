@@ -122,9 +122,13 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
             return;
         }
 
+        String senderId = "";
+        if(message != null)
+            senderId = message.getSender().getUserId();
+
         //Set the content of the message, sender, and received time
         viewHolder.content.setText(LayerImpl.getMessageText(message));
-        viewHolder.sender.setText(ParseImpl.getUsername(message.getSentByUserId()));
+        viewHolder.sender.setText(ParseImpl.getUsername(senderId));
         viewHolder.time.setText(LayerImpl.getReceivedAtTime(message));
         viewHolder.message = message;
 
@@ -132,7 +136,7 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
         // the message box
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.weight = 1.0f;
-        if(message != null && !message.getSentByUserId().equals(LayerImpl.getLayerClient().getAuthenticatedUserId())) {
+        if(message != null && !senderId.equals(LayerImpl.getLayerClient().getAuthenticatedUserId())) {
             params.gravity = Gravity.LEFT;
             viewHolder.contentLayout.setBackgroundColor(Color.YELLOW);
         } else {
