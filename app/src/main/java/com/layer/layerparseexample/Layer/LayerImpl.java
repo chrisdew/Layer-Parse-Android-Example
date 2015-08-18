@@ -30,7 +30,7 @@ public class LayerImpl {
     // http://layer.com/signup, then follow these instructions:
     // 1. Go to http://developer.layer.com to sign in
     // 2. Open the Dashboard, and select your app from the dropdown on the top left
-    // 3. Click "Info" in the left panel
+    // 3. Click "Keys" in the left panel
     // 4. Copy your Staging App ID and paste it here:
     private static String LayerAppID = "LAYER_APP_ID";
 
@@ -57,21 +57,24 @@ public class LayerImpl {
     //Called when any Activity is created to make sure the LayerClient is created, the callbacks
     // are registered, and the LayerClient is connected
     public static void initialize(Context context){
-        if(mLayerClient == null){
+        if(mLayerClient == null && hasValidAppID()){
+            LayerClient.enableLogging(context);
             mLayerClient = LayerClient.newInstance(context.getApplicationContext(), LayerAppID);
         }
 
-        if(connectionListener == null) {
-            connectionListener = new MyConnectionListener();
-            mLayerClient.registerConnectionListener(connectionListener);
-        }
-        if(authenticationListener == null) {
-            authenticationListener = new MyAuthenticationListener();
-            mLayerClient.registerAuthenticationListener(authenticationListener);
-        }
+        if(mLayerClient != null) {
+            if (connectionListener == null) {
+                connectionListener = new MyConnectionListener();
+                mLayerClient.registerConnectionListener(connectionListener);
+            }
+            if (authenticationListener == null) {
+                authenticationListener = new MyAuthenticationListener();
+                mLayerClient.registerAuthenticationListener(authenticationListener);
+            }
 
-        if(!mLayerClient.isConnected())
-            mLayerClient.connect();
+            if (!mLayerClient.isConnected())
+                mLayerClient.connect();
+        }
     }
 
     //Connects to the Layer service

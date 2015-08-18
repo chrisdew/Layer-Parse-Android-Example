@@ -92,6 +92,8 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
                 .sortDescriptor(new SortDescriptor(Message.Property.POSITION, SortDescriptor.Order.ASCENDING))
                 .build(), callback);
 
+
+
         //Sets the LayoutInflator, Click callback handler, and the view parent
         mInflater = LayoutInflater.from(context);
         mMessageClickHandler = messageClickHandler;

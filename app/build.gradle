@@ -27,9 +27,9 @@ repositories {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.0.0'
-    compile 'com.google.android.gms:play-services-base:6.5.+'
-    compile 'com.layer.sdk:layer-sdk:0.13.0'
-    compile 'org.slf4j:slf4j-api:1.7.7'
+    compile 'com.layer.sdk:layer-sdk:0.16.0'
+    compile 'com.google.android.gms:play-services-gcm:7.5.0'
+    compile 'org.slf4j:slf4j-nop:1.5.8'
     compile 'com.android.support:recyclerview-v7:+'
     compile 'com.parse.bolts:bolts-android:1.+'
 }

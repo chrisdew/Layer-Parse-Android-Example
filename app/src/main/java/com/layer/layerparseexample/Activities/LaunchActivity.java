@@ -17,12 +17,14 @@ public class LaunchActivity extends ActivityBase {
 
     //Make sure both the Layer and Parse configurations are set
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         if (!LayerImpl.hasValidAppID()) {
 
             showAlert("Invalid Layer App ID", "You will need a valid Layer App ID in order to run this example. " +
                     "If you haven't already, create a Layer account at http://layer.com/signup and then follow these instructions:\n\n" +
                     "1. Go to http://developer.layer.com and sign in\n" +
-                    "2. Select \"Info\" on the left panel\n" +
+                    "2. Select \"Keys\" on the left panel\n" +
                     "3. Copy the 'Staging App ID'\n" +
                     "4. Paste that value in the LayerAppID String in LayerImpl.java");
 
@@ -37,7 +39,6 @@ public class LaunchActivity extends ActivityBase {
 
         } else {
             //The base class will create a Layer object (since one should not exist) and connect
-            super.onCreate(savedInstanceState);
             setContentView(R.layout.splash_screen);
         }
     }
