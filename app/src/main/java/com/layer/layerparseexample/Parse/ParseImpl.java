@@ -78,6 +78,11 @@ public class ParseImpl {
     // we can continue the sign in flow
     public static void registerUser(String username, String password, String email, final ParseLoginCallbacks callback){
 
+        // The following two lines stop the app failing with "com.parse.ParseRequest$ParseRequestException: invalid session token"
+        // Solution found at: http://stackoverflow.com/a/31482503/129805
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        currentUser.logOut();
+
         final ParseUser user = new ParseUser();
         user.setUsername(username);
         user.setPassword(password);
